@@ -1,0 +1,7 @@
+# for bar labels (single column)
+ax = df.plot.barh()
+ax.bar_label(ax.containers[0], label_type='edge')
+
+# for bar labels (Grouped columns)
+for container in ax.containers:
+    ax.bar_label(container, label_type='edge')
