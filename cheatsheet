@@ -5,3 +5,14 @@ ax.bar_label(ax.containers[0], label_type='edge', fmt='%.2f')
 # for bar labels values (Grouped columns) at the edge of bars and in 2 decimal place
 for container in ax.containers:
     ax.bar_label(container, label_type='edge', fmt='%.2f')
+    
+    
+# to convert a column of datetime (string) into datetime object
+# column will become dtype: datetime64[ns]
+df['col'] = pd.to_datetime(df['col'])
+
+# After converting, if we want to split into year,month,days in new columns
+# Create new columns
+df['day'] = df['col'].dt.day
+df['month'] = df['col'].dt.month
+df['year'] = df['col'].dt.year
