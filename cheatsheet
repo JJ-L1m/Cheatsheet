@@ -16,3 +16,11 @@ df['col'] = pd.to_datetime(df['col'])
 df['day'] = df['col'].dt.day
 df['month'] = df['col'].dt.month
 df['year'] = df['col'].dt.year
+
+# for numeric columns in your dataframe, fill na with median value
+for i in df.describe().columns: 
+    df[i]=df[i].fillna(df[i].median())
+    
+# for categorical columns, fill na with mode(i.e.,value that appears most often)
+or i in df.describe(include='object').columns: 
+    df[i]=df[i].fillna(df[i].mode()[0])
